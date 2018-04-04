@@ -1,0 +1,73 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>crudApp</title>
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+</head>
+
+<body ng-app="crud-app" ng-controller="crudCtrl">
+    <div>
+        <h5>CRUD Operation Using NodeJs</h5>
+    </div>
+    <p>Data Received: {{dbData}}</p>
+    <div>
+        <label for="btn1">Click on the button to Get Records</label>
+        <button ng-click="get_Record()">Get_Records</button> &emsp;&emsp;
+        <label for="btn1">Click on the button to Delete All Records</label>
+        <button ng-click="delete_All()">Delete_AllRecords</button> <br>
+        <table border="5px">
+            <tr>
+                <th>Object_ID</th>
+                <th>UserName</th>
+                <th>UserID</th>
+                <th>Location</th>
+                <th>Delete | Edit</th>
+            </tr>
+            <tr ng-repeat="item in dbData">
+                <td>{{item._id}}</td>
+                <td>{{item.uname}}</td>
+                <td>{{item.uid}}</td>
+                <td>{{item.loc}}</td>
+                <td>
+                    <button ng-click="delete_One(item.uname, item.uid, item.loc)">Delete</button>
+                    <button ng-click="edit_Records(item.uname, item.uid, item.loc)">Edit</button>
+                </td>
+            </tr>
+        </table>
+    </div> <br> <br>
+    <div>
+        <h5>Please Insert the Data Here!</h5>
+        <label for="t1">UserName :</label>
+        <input type="text" id="t1" ng-model="in_data1">
+
+        <label for="t2">UserID :</label>
+        <input type="text" id="t2" ng-model="in_data2">
+
+        <label for="t3">Location :</label>
+        <input type="text" id="t3" ng-model="in_data3">
+
+        <label for="btn2">Click on the button to Insert Data :</label>
+        <button ng-click="insert_Records()">Insert_Record</button>
+    </div>
+
+    <div>
+        <h5>Please Edit the Data Here!</h5>
+        <label for="t1">UserName :</label>
+        <input type="text" id="t1" ng-model="u_data1">
+
+        <label for="t2">UserID :</label>
+        <input type="text" id="t2" ng-model="u_data2">
+
+        <label for="t3">Location :</label>
+        <input type="text" id="t3" ng-model="u_data3">
+
+        <label for="btn3">Click on the button to Update the Data :</label>
+        <button ng-click="update_Records()" id="btn3">Update_Record</button>
+    </div>
+</body>
+
+</html
